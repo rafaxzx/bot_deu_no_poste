@@ -160,3 +160,4 @@ cython_debug/
 #.idea/
 
 myToken.py
+.DS_Store
