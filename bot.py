@@ -7,8 +7,6 @@ import myToken
 import asyncio
 from telebot.async_telebot import AsyncTeleBot
 
-#BOT_TOKEN = "5809108667:AAHFxzFAuaRWXILRc9lL3noHyg42AOfbupY"
-
 #Chat iD of users to initial tests Rafael:616045077 Group:-871500862 SuperGroup:-1001900572890 Lagoa:5991412323
 listOfUsersiD = [-1001900572890]
 groupChatiD = -1001900572890
