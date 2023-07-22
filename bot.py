@@ -4,6 +4,7 @@ import getData
 import scheduler
 import myToken
 #eternal imports
+import time
 import asyncio
 from telebot.async_telebot import AsyncTeleBot
 
@@ -79,5 +80,8 @@ async def SendResultsToiD(useriD, results):
 async def mainF():
     await asyncio.gather(bot.infinity_polling(),poolingApp(actualResults))
 
+try:
 #rodar o código de maneira assincrona
-asyncio.run(mainF())
+    asyncio.run(mainF())
+except:
+    print(f"Um erro aconteceu e o script será encerrado agora: {time.localtime()}")
