@@ -164,3 +164,4 @@ cython_debug/
 myToken.py
 .DS_Store
 >>>>>>> 87b33d225897ca94eaf5a2336a6552b833668278
+.vscode
