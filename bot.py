@@ -4,12 +4,13 @@ import getData
 import scheduler
 import myToken
 
-# eternal imports
+# external imports
+import json
 import time
 import asyncio
 from telebot.async_telebot import AsyncTeleBot
 
-# Chat iD of users to initial tests Rafael:616045077 Group:-871500862 SuperGroup:-1001900572890 Lagoa:5991412323
+# Chat iD of users to initial tests Rafael:616045077 SuperGroup:-1001900572890
 listOfUsersiD = [-1001900572890]
 groupChatiD = -1001900572890
 
@@ -63,10 +64,11 @@ async def poolingApp(actualResults: dict[str, list]):
                 print("Resultados não estão diferentes dos anteriores")
 
             actualResults = receivedResults
+            # Call save function before close
+            SaveResults(results["tableResult"])
             await asyncio.sleep(60)
             runCounter += 1
         await asyncio.sleep(60)
-    print(f"Saindo do Loop desativando o Bot que rodou: {runCounter} vezes")
 
 
 async def SendResultsToiD(useriD, results):
@@ -86,10 +88,28 @@ async def SendResultsToiD(useriD, results):
             textResult = textResult + f'{resultNumber.split("-")[0]}, '
         await bot.send_message(useriD, f"{resultName} : {textResult}")
         textResult = ""
+    SaveResults(results["tableResult"])
+
+
+# New function to read persisted last results obtained
+def ReadResults():
+    # Reading to sample.json
+    with open("dataBase.json", "r") as inputfile:
+        readedFileString = inputfile.read()
+        return json.loads(readedFileString)
+
+
+# New function to save new results obtained
+def SaveResults(result):
+    with open("dataBase.json", "w") as outputfile:
+        json_object = json.dumps(result, indent=4)
+        outputfile.write(json_object)
 
 
 # Código principal
 async def mainF():
+    actualResults = ReadResults()
+    # Before first run, read a json file with results
     await asyncio.gather(bot.infinity_polling(), poolingApp(actualResults))
 
 
