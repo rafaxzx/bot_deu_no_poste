@@ -158,10 +158,8 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
-<<<<<<< HEAD
-=======
 
 myToken.py
+dataBase.json
 .DS_Store
->>>>>>> 87b33d225897ca94eaf5a2336a6552b833668278
 .vscode
