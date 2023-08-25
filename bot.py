@@ -116,5 +116,6 @@ async def mainF():
 try:
     # rodar o código de maneira assincrona
     asyncio.run(mainF())
-except:
+except Exception as e:
     print(f"Um erro aconteceu e o script será encerrado agora: {time.localtime()}")
+    print(f"O erro foi: {e.message}")
